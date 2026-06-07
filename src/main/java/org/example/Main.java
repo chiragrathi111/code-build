@@ -20,5 +20,6 @@ public class Main {
         System.out.println("10 - 4 = " + calc.subtract(10, 4));
         System.out.println("3 x 4 = " + calc.multiply(3, 4));
         System.out.println("10 / 2 = " + calc.divide(10, 2));
+        System.out.println("100 / 5 = " + calc.divide(100, 5));
     }
 }
