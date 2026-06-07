@@ -1,0 +1,29 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+    commands:
+      - echo "Installing Maven dependencies..."
+      - mvn -q dependency:resolve
+  pre_build:
+    commands:
+      - echo "Running unit tests..."
+      - mvn -q test
+  build:
+    commands:
+      - echo "Building the project..."
+      - mvn -q package
+  post_build:
+    commands:
+      - echo "Build completed successfully."
+artifacts:
+  files:
+    - target/student-1.0-SNAPSHOT.jar
+    - appspec.yml
+    - scripts/**
+  discard-paths: no
+cache:
+  paths:
+    - '/root/.m2/**/*'
+    - '$HOME/.m2/**/*'

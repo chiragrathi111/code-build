@@ -1,0 +1,18 @@
+version: 0.0
+os: linux
+files:
+  - source: target/student-1.0-SNAPSHOT.jar
+    destination: /home/ubuntu/student
+hooks:
+  ApplicationStop:
+    - location: scripts/stop_server.sh
+      timeout: 120
+      runas: ubuntu
+  BeforeInstall:
+    - location: scripts/backup_existing.sh
+      timeout: 120
+      runas: ubuntu
+  AfterInstall:
+    - location: scripts/start_server.sh
+      timeout: 120
+      runas: ubuntu
